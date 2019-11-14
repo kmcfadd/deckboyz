@@ -4,11 +4,22 @@
     border: 1px solid black;
     margin: 5px;
     padding: 10px;
-    width: 100%;
+    width: 50%;
+    flex-flow: row wrap;
 }
 
-p {
+.Name {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.Type {
+    font-style: italic;
     font-size: 10px;
+}
+
+.Text {
+    font-size: 8px;
 }
 
 .ResultItem {
@@ -18,4 +29,5 @@ p {
     height: auto;
     width: 25%;
     margin: 5px;
+    flex-flow: row wrap;
 }

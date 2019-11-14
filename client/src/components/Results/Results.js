@@ -1,18 +1,23 @@
 import React from 'react'
 import './Results.css';
 
-export function Results({ children }) {
-    return <ul className="Results">{children}</ul>;
-}
+// export function Results({ children }) {
+//     return <div className="Results">
+//                 {children}
+//             </div>
+// }
 
-export function ResultItem({ name, set, colors, number,
-manaCost, type, types, power, toughness, text,}) {
+export function ResultItem({ cards }) {
     return (
-        <li className="ResultItem">
-            <p className="Name">{name} | {manaCost}</p>
-            <p className="Type">{type} | {set} #{number}</p>
-            <p className="Text">{text}</p>
+        <ul className="Results">
+            {cards.map(card => (
+        <li key={card._id} className="ResultItem">
+            <p className="Name">{card.name} {card.manaCost}</p>
+            <p className="Type">{card.type} <br /> {card.set} #{card.number}</p>
+            <p className="Text">{card.text}</p>
         </li>
+    ))}
+        </ul>   
     )
 }
 

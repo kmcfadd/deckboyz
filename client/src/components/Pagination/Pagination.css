@@ -1,0 +1,12 @@
+.pageItem {
+    list-style-type: none;
+    display: inline-block;
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid black;
+}
+
+nav {
+    height: auto;
+    width: auto;
+}

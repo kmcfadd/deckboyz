@@ -1,10 +1,11 @@
 import React from 'react'
+import './Searchbar.css'
 
 export function Searchbar(props) {
     return (
         <div>
             <form>
-                <input type="text" placeholder="card name" {...props} /><br />
+                <input className="searchBar" type="text" placeholder="card name" {...props} />
             </form>
         </div>
     )

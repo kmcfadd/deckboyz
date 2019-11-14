@@ -1,0 +1,12 @@
+.searchBtn {
+    width: 25%;
+    padding: 5px;
+    margin: 5px;
+}
+
+.searchBar {
+    width: 75%;
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+}

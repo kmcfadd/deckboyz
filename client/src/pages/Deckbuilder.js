@@ -3,11 +3,14 @@ import Wrapper from '../components/Wrapper/Wrapper';
 import { Searchbar, SearchBtn } from '../components/Searchbar/Searchbar';
 import { Results, ResultItem } from '../components/Results/Results';
 import API from '../utils/API';
+import Pagination from '../components/Pagination/Pagination';
 
 class Deckbuilder extends Component {
     state = {
         cards: [],
         cardSearch: "",
+        currentPage: 1,
+        cardsPerPage: 5,
     }
 
     // componentDidMount() {
@@ -39,9 +42,29 @@ class Deckbuilder extends Component {
     }
 
     render() {
+        const { cards, currentPage, cardsPerPage } = this.state;
+
+        const indexOfLastCard = currentPage * cardsPerPage;
+        const indexOfFirstCard = indexOfLastCard - cardsPerPage;
+        const currentCards = cards.slice(indexOfFirstCard, indexOfLastCard);
+
+        const paginate = pageNumber => this.setState({currentPage: pageNumber})
+
+        const searchStyle = {
+            display: 'flex',    
+        }
+
+        const wrapperStyle = {
+            display: 'flex',
+            width: '90%',
+            height: '500px',
+            flexFlow: 'column wrap',
+        }
+
         return (
-            <Wrapper>
-                <Searchbar
+            <div style={wrapperStyle}>
+                <div style={searchStyle}>
+                   <Searchbar
                     name="cardSearch"
                     placeholder="Search for cards" 
                     value={this.state.cardSearch}
@@ -54,29 +77,25 @@ class Deckbuilder extends Component {
                 />
                 <SearchBtn
                     onClick={this.handleFormSubmit}
-
                 >
                     Search
-                </SearchBtn>
-                <Results>
-                    {this.state.cards.map(card => {
-                        return (
-                            <ResultItem
-                                key={card._id}
-                                name={card.name}
-                                number={card.number}
-                                manaCost={card.manaCost}
-                                type={card.type}
-                                set={card.set}
-                                text={card.text}
-                            />
-                        )
-                    })}
-                </Results>   
+                </SearchBtn> 
+                </div>
+                
+                
+                    <ResultItem 
+                        cards={currentCards}
+                    />
+                    <Pagination 
+                        cardsPerPage={cardsPerPage}
+                        totalCards={cards.length}
+                        paginate={paginate} />   
+                
+                
                 {/* <Sidebar>
                     ugh
                 </Sidebar> */}
-            </Wrapper>
+            </div>
     )
 }
     
