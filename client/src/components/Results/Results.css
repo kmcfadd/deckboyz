@@ -1,0 +1,21 @@
+.Results {
+    display: flex;
+    flex-grow: 8;
+    border: 1px solid black;
+    margin: 5px;
+    padding: 10px;
+    width: 100%;
+}
+
+p {
+    font-size: 10px;
+}
+
+.ResultItem {
+    border: 1px solid black;
+    list-style-type: none;
+    padding: 5px; 
+    height: auto;
+    width: 25%;
+    margin: 5px;
+}

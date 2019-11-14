@@ -1,11 +1,19 @@
 import React from 'react'
+import './Results.css';
 
-function Results(props) {
+export function Results({ children }) {
+    return <ul className="Results">{children}</ul>;
+}
+
+export function ResultItem({ name, set, colors, number,
+manaCost, type, types, power, toughness, text,}) {
     return (
-        <div>
-            {props.children}
-        </div>
+        <li className="ResultItem">
+            <p className="Name">{name} | {manaCost}</p>
+            <p className="Type">{type} | {set} #{number}</p>
+            <p className="Text">{text}</p>
+        </li>
     )
 }
 
-export default Results;
+
