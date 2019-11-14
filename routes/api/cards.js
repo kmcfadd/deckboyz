@@ -7,6 +7,6 @@ router.route('/')
 
 // Matches with /api/cards/:id
 router.route('/:id')
-    .get(cardController.findById);
+    .get(cardController.findByName);
 
 module.exports = router;
