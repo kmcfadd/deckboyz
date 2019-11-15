@@ -15,7 +15,9 @@ if (process.env.NODE_ENV === "production") {
 
 app.use(routes)
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/mtg', 
+mongoose.connect(
+  process.env.MONGODB_URI || 
+  'mongodb://user1:password1@dbh23.mlab.com:27237/heroku_6t5lff23', 
 { useNewUrlParser: true })
 
 // Send every other request to the React app
@@ -25,5 +27,5 @@ app.get("*", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🌎 ==> API server now on port ${PORT}!`);
+  console.log(`Server now on port ${PORT}!`);
 });
