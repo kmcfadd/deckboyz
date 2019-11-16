@@ -26,8 +26,9 @@
     border: 1px solid black;
     list-style-type: none;
     padding: 5px; 
-    height: auto;
+    height: 35%;
     width: 25%;
     margin: 5px;
     flex-flow: row wrap;
+    overflow: ellipsis;
 }
