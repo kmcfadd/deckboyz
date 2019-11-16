@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Wrapper from '../components/Wrapper/Wrapper';
 import { Searchbar, SearchBtn } from '../components/Searchbar/Searchbar';
-import { Results, ResultItem } from '../components/Results/Results';
+import { ResultItem } from '../components/Results/Results';
 import API from '../utils/API';
 import Pagination from '../components/Pagination/Pagination';
 
@@ -33,6 +33,16 @@ class Deckbuilder extends Component {
         });
     };
 
+    handleEnterPress = event => {
+        if(event.key === 'Enter') {
+            event.preventDefault();
+            API.getCard(this.state.cardSearch)
+            .then(res => 
+                this.setState({ cards: res.data }))
+            .catch(err => console.log(err))
+        }
+    }
+
     handleFormSubmit = event => {
         event.preventDefault();
         API.getCard(this.state.cardSearch)
@@ -57,8 +67,16 @@ class Deckbuilder extends Component {
         const wrapperStyle = {
             display: 'flex',
             width: '90%',
-            height: '500px',
+            height: '75%',
             flexFlow: 'column wrap',
+        }
+
+        const errorStyle = {
+            margin: '10px',
+            padding: '10px',
+            border: '1px solid black',
+            height: '75%',
+            width: '75%',
         }
 
         return (
@@ -69,11 +87,7 @@ class Deckbuilder extends Component {
                     placeholder="Search for cards" 
                     value={this.state.cardSearch}
                     onChange={this.handleInputChange}
-                    onKeyPress={e => {
-                        if (e.key === 'Enter') {
-                            this.handleFormSubmit();
-                        }
-                    }}
+                    onKeyPress={this.handleEnterPress}
                 />
                 <SearchBtn
                     onClick={this.handleFormSubmit}
@@ -82,10 +96,10 @@ class Deckbuilder extends Component {
                 </SearchBtn> 
                 </div>
                 
-                
+                {cards.length === 0 ? <h3 style={errorStyle}>No Results found</h3> :
                     <ResultItem 
                         cards={currentCards}
-                    />
+                /> }
                     <Pagination 
                         cardsPerPage={cardsPerPage}
                         totalCards={cards.length}

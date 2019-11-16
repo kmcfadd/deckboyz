@@ -1,9 +1,32 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-    Username: {type: String, required: true },
-    Email: { type: String, required: true },
-    Password: { type: String, required: true },
+    username: { 
+        type: String, 
+        required: true 
+    },
+    email: { 
+        type: String, 
+        required: true,
+        match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
+    },
+    password: { 
+        type: String,
+        required: true,
+        validate: [
+            function (input) {
+                return input.length >=6;
+            },
+            'Password needs to be longer'
+        ]
+    },
+    created: {
+        type: Date,
+        default: Date.now
+    },
+    isLoggedin: {
+        type: Boolean
+    }
 
 })
 

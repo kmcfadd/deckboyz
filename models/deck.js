@@ -13,9 +13,16 @@ const cardSchema = new mongoose.Schema ({
     toughness: { type:  String, required: false },
     text: { type:  String, required: true },
     artist: { type:  String, required: false },
-    copies: { type: Number, required: false },
-})
+    copies: { type: Number, require: true },
+});
 
-const Card = mongoose.model('Card', cardSchema, 'cards');
+const deckSchema = new mongoose.Schema ({ 
+    children: [cardSchema],
+    deckName: {type: String, required: true },
+    createdby: { type: String, },
+    createdOn: { type: Date, default: Date.now },
+});
 
-module.exports = Card;
+const Deck = mongoose.model('Deck', deckSchema);
+
+module.exports = Deck;

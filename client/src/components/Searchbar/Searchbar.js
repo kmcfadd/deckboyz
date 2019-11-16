@@ -13,7 +13,7 @@ export function Searchbar(props) {
 
 export function SearchBtn({ children, onClick }) {
     return (
-        <button onClick={onClick} className="searchBtn">
+        <button onClick={onClick} className="searchBtn" type="submit">
             {children}
         </button>
     )
