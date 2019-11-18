@@ -7,19 +7,19 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Deckbuilder from './pages/Deckbuilder';
 import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';  
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
     <Router>
-      <Header />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/decks" component={Decks} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/dashboard" component={Dashboard} />
-          <Route exact path="/deckbuilder" component={Deckbuilder} />
-        </Switch>
+      {/* <Header /> */}
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/decks" component={Decks} />
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/deckbuilder" component={Deckbuilder} />
+      </Switch>
       <Footer />
     </Router>
   );
