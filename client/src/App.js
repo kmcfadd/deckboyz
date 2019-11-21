@@ -6,8 +6,8 @@ import Decks from './pages/Decks';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Deckbuilder from './pages/Deckbuilder';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
+// import Header from './components/Header/Header';
+// import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/deckbuilder" component={Deckbuilder} />
       </Switch>
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 }

@@ -17,9 +17,9 @@ const cardSchema = new mongoose.Schema ({
 });
 
 const deckSchema = new mongoose.Schema ({ 
-    children: [cardSchema],
-    deckName: {type: String, required: true },
-    createdby: { type: String, },
+    deck: { type: Array, required: true },
+    deckName: { type: String, required: true },
+    createdBy: { type: String, },
     createdOn: { type: Date, default: Date.now },
 });
 
