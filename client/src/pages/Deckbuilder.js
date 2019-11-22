@@ -152,92 +152,94 @@ class Deckbuilder extends Component {
         }
 
         return (
-            <div style={wrapperStyle}>
+            <view>
                 <Navbar />
-                <div style={searchStyle}>
-                    <Searchbar
-                        name="cardSearch"
-                        placeholder="Search for cards"
-                        value={this.state.cardSearch}
-                        onChange={this.handleInputChange}
-                        onKeyPress={this.handleEnterPress}
-                    />
-                    <SearchBtn onClick={this.handleCardSearch}>
-                        Search
+                <div style={wrapperStyle}>
+                    <div style={searchStyle}>
+                        <Searchbar
+                            name="cardSearch"
+                            placeholder="Search for cards"
+                            value={this.state.cardSearch}
+                            onChange={this.handleInputChange}
+                            onKeyPress={this.handleEnterPress}
+                        />
+                        <SearchBtn onClick={this.handleCardSearch}>
+                            Search
                 </SearchBtn>
-                </div>
-                <div style={resultWrapper}>
-                    {cards.length === 0 ? <h3 style={errorStyle}>No Results found</h3> :
-                        <ul className="Results">
-                            {currentCards.map(card => (
-                                <li key={card._id}
-                                    onClick={(event) => {
-                                        event.preventDefault();
-                                        this.handleCheck(card) === false ?
-                                            this.setState((prevState) => ({
-                                                currentDeck: [...prevState.currentDeck, {
-                                                    _id: card._id,
-                                                    artist: card.artist,
-                                                    colors: card.colors,
-                                                    name: card.name,
-                                                    manaCost: card.manaCost,
-                                                    convertedManaCost: card.convertedManaCost,
-                                                    types: card.types,
-                                                    type: card.type,
-                                                    set: card.set,
-                                                    number: card.number,
-                                                    power: card.power,
-                                                    toughness: card.toughness,
-                                                    text: card.text,
-                                                    copies: 1
-                                                }]
-                                            })) && this.handleTotalCards()
-                                            : console.log('exists')
-                                    }
-                                    }
-                                    className="ResultItem">
-                                    <p className="Name">{card.name} {card.manaCost}</p>
-                                    <p className="Type">{card.type} <br /> {card.set} #{card.number}</p>
-                                    <p className="Text">{card.text}</p>
-                                </li>
-                            ))}
-                        </ul>
-                    }
-
-                    <div style={deckStyle}>
-                        <form>
-                            <span style={{ whiteSpace: 'nowrap' }}>
-                                <label style={{ margin: "5px" }}>{this.state.currentTotalCards}/60</label>
-                                <input
-                                    value={this.state.currentDeckName}
-                                    onChange={this.handleInputChange}
-                                    name="currentDeckName"
-                                    placeholder="Deck Name"
-                                />
-                            </span>
-                            <ul style={{ width: "100%" }}>
-                                {this.state.currentDeck.map(card => (
+                    </div>
+                    <div style={resultWrapper}>
+                        {cards.length === 0 ? <h3 style={errorStyle}>No Results found</h3> :
+                            <ul className="Results">
+                                {currentCards.map(card => (
                                     <li key={card._id}
-                                        style={{ listStyleType: 'none', width: '100%' }}
-                                    >
-                                        <button className="Plus" id="plus" onClick={() => this.incrementCard(card)}>+</button>
-                                        <p className="Name">
-                                            {card.copies} {card.name} {card.manaCost}
-                                        </p>
-                                        <button className="Minus" id="minus" onClick={() => this.removeCard(card)}>-</button>
+                                        onClick={(event) => {
+                                            event.preventDefault();
+                                            this.handleCheck(card) === false ?
+                                                this.setState((prevState) => ({
+                                                    currentDeck: [...prevState.currentDeck, {
+                                                        _id: card._id,
+                                                        artist: card.artist,
+                                                        colors: card.colors,
+                                                        name: card.name,
+                                                        manaCost: card.manaCost,
+                                                        convertedManaCost: card.convertedManaCost,
+                                                        types: card.types,
+                                                        type: card.type,
+                                                        set: card.set,
+                                                        number: card.number,
+                                                        power: card.power,
+                                                        toughness: card.toughness,
+                                                        text: card.text,
+                                                        copies: 1
+                                                    }]
+                                                })) && this.handleTotalCards()
+                                                : console.log('exists')
+                                        }
+                                        }
+                                        className="ResultItem">
+                                        <p className="Name">{card.name} {card.manaCost}</p>
+                                        <p className="Type">{card.type} <br /> {card.set} #{card.number}</p>
+                                        <p className="Text">{card.text}</p>
                                     </li>
                                 ))}
                             </ul>
-                            <SearchBtn style={{ alignSelf: 'flex-end' }} onClick={this.submitDeck}>Submit Deck</SearchBtn>
-                        </form>
-                    </div>
-                </div>
-                <Pagination
-                    cardsPerPage={cardsPerPage}
-                    totalCards={cards.length}
-                    paginate={paginate} />
+                        }
 
-            </div>
+                        <div style={deckStyle}>
+                            <form>
+                                <span style={{ whiteSpace: 'nowrap' }}>
+                                    <label style={{ margin: "5px" }}>{this.state.currentTotalCards}/60</label>
+                                    <input
+                                        value={this.state.currentDeckName}
+                                        onChange={this.handleInputChange}
+                                        name="currentDeckName"
+                                        placeholder="Deck Name"
+                                    />
+                                </span>
+                                <ul style={{ width: "100%" }}>
+                                    {this.state.currentDeck.map(card => (
+                                        <li key={card._id}
+                                            style={{ listStyleType: 'none', width: '100%' }}
+                                        >
+                                            <button className="Plus" id="plus" onClick={() => this.incrementCard(card)}>+</button>
+                                            <p className="Name">
+                                                {card.copies} {card.name} {card.manaCost}
+                                            </p>
+                                            <button className="Minus" id="minus" onClick={() => this.removeCard(card)}>-</button>
+                                        </li>
+                                    ))}
+                                </ul>
+                                <SearchBtn style={{ alignSelf: 'flex-end' }} onClick={this.submitDeck}>Submit Deck</SearchBtn>
+                            </form>
+                        </div>
+                    </div>
+                    <Pagination
+                        cardsPerPage={cardsPerPage}
+                        totalCards={cards.length}
+                        paginate={paginate} />
+
+                </div>
+            </view>
         )
     }
 }

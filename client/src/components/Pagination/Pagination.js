@@ -1,12 +1,12 @@
 import React from 'react'
 import './Pagination.css'
 
-const Pagination = ({ 
+const Pagination = ({
     cardsPerPage, totalCards, paginate }) => {
 
     const pageNumbers = [];
 
-    for (let i = 1; i<= Math.ceil(totalCards / cardsPerPage); i++){
+    for (let i = 1; i <= Math.ceil(totalCards / cardsPerPage); i++) {
         pageNumbers.push(i);
     }
 
@@ -16,10 +16,10 @@ const Pagination = ({
                 {pageNumbers.map(number => (
                     <li key={number} className="pageItem">
                         <a onClick={() => paginate(number)}
-                        href="#"
-                        className="pageLink">
+                            href="#"
+                            className="pageLink">
                             {number}
-                        </a>    
+                        </a>
                     </li>
                 ))}
             </ul>
