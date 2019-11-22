@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import API from '../utils/API';
+import Navbar from '../components/Navbar/navbar'
 import Wrapper from '../components/Wrapper/Wrapper';
+import API from '../utils/API';
 
 class Decks extends Component {
     state = {
@@ -17,7 +18,9 @@ class Decks extends Component {
 
     render() {
         return (
-            <Wrapper>
+            <div>
+                <Navbar />
+                <Wrapper>
                 <ul>
                     {this.state.decks.map(deck => (
                         <li style={{listStyleType: 'none'}}>
@@ -31,9 +34,10 @@ class Decks extends Component {
                         </li>
                 ))}
                 </ul> 
-            </Wrapper>
+            </Wrapper>   
+            </div>
         )
-    }   
+    }
 }
 
 export default Decks;
