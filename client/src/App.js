@@ -6,13 +6,13 @@ import Decks from './pages/Decks';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Deckbuilder from './pages/Deckbuilder';
+import Navbar from './components/Navbar/navbar';
 // import Header from './components/Header/Header';
 // import Footer from './components/Footer/Footer';
 
 function App() {
   return (
     <Router>
-      {/* <Header /> */}
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/decks" component={Decks} />
