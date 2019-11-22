@@ -7,11 +7,11 @@ import './Results.css';
 //             </div>
 // }
 
-export function ResultItem({ cards }) {
+export function ResultItem({ cards, onClick }) {
     return (
         <ul className="Results">
             {cards.map(card => (
-        <li key={card._id} className="ResultItem">
+        <li onClick={onClick} key={card._id} className="ResultItem">
             <p className="Name">{card.name} {card.manaCost}</p>
             <p className="Type">{card.type} <br /> {card.set} #{card.number}</p>
             <p className="Text">{card.text}</p>
