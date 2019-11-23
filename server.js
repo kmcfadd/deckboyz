@@ -1,3 +1,10 @@
+require("rootpath")();
+const express = require('express');
+const app = express();
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const jwt = require('helpers/jwt');
+const errorHandler = require('helpers/error-handler');
 const express = require("express");
 const path = require("path");
 const mongoose = require('mongoose')
@@ -15,10 +22,20 @@ if (process.env.NODE_ENV === "production") {
 
 app.use(routes)
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(cors());
+
+app.use(jwt());
+
+app.use('/models', require('/models/users.controller'));
+
+app.use(errorHandler);
+
 mongoose.connect(
-  process.env.MONGODB_URI || 
-  'mongodb://user1:password1@dbh23.mlab.com:27237/heroku_6t5lff23', 
-{ useNewUrlParser: true })
+  process.env.MONGODB_URI ||
+  'mongodb://user1:password1@dbh23.mlab.com:27237/heroku_6t5lff23',
+  { useNewUrlParser: true })
 
 // Send every other request to the React app
 // Define any API routes before this runs
