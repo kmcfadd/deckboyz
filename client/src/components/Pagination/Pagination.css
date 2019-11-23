@@ -1,10 +1,14 @@
 .pageItem {
     list-style-type: none;
-    display: inline-block;
     padding: 5px;
     margin: 5px;
     border: 1px solid black;
     cursor: pointer;
+}
+.pagination{
+    display: flex;
+    justify-content: center;
+    flex-wrap:wrap;
 }
 
 nav {

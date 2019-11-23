@@ -152,6 +152,7 @@ class Deckbuilder extends Component {
         }
 
         return (
+
             <div style={wrapperStyle}>
                 <Navbar />
                 <div style={searchStyle}>
@@ -220,11 +221,11 @@ class Deckbuilder extends Component {
                                     <li key={card._id}
                                         style={{ listStyleType: 'none', width: '100%' }}
                                     >
-                                        <button className="Plus" id="plus" onClick={() => this.incrementCard(card)}>+</button>
+                                        <button type="button" className="Plus" id="plus" onClick={() => this.incrementCard(card)}>+</button>
                                         <p className="Name">
                                             {card.copies} {card.name} {card.manaCost}
                                         </p>
-                                        <button className="Minus" id="minus" onClick={() => this.removeCard(card)}>-</button>
+                                        <button type="button" className="Minus" id="minus" onClick={() => this.removeCard(card)}>-</button>
                                     </li>
                                 ))}
                             </ul>
