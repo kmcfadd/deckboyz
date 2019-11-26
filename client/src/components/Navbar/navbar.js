@@ -3,7 +3,7 @@ import "./navbar.css"
 export default class Navbar extends React.Component {
     render() {
         return (
-            <view>
+            <div>
                 <nav className="navbar" role="navigation" aria-label="dropdown navigation">
                     <div className="navbar-item has-dropdown is-hoverable">
                         <a className="navbar-link is-arrowless" href="/">
@@ -27,7 +27,7 @@ export default class Navbar extends React.Component {
                         </div>
                     </div>
                 </nav>
-            </view>
+            </div>
         )
     }
 }

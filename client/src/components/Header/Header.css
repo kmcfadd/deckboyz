@@ -27,6 +27,7 @@ body{
     left: 0;
     right: 0;
 }
+
 .menu-items>div{
         background-color:white;
         height: 180px;
@@ -47,7 +48,12 @@ a{
 
 }
 .item3{
+    transition: .5s;
     bottom:365px;
+    
+}
+.item3:hover .flip-card-back{
+    transform: rotateY(180deg)
 }
 .item4{
     bottom:545px;

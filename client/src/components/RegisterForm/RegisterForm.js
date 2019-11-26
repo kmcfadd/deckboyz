@@ -12,7 +12,7 @@ class Form extends Component {
 
     handleInput = e => {
         const { name, value } = e.target;
-        
+
         this.setState({
             [name]: value
         })
@@ -33,30 +33,32 @@ class Form extends Component {
     render() {
         return (
             <Wrapper>
-                <div className="row">
-                    <label>Username</label>
-                    <div>
-                        <input type="text" id="Username" name="Username" data-val-required="Username is required."
-                        data-val="true" value={this.state.Username} onChange={this.handleInput} />
+                <div className="panel is-primary">
+                    <div className="field">
+                        <label>Username</label>
+                        <div className="control">
+                            <input type="text" id="Username" name="Username" data-val-required="Username is required."
+                                data-val="true" value={this.state.Username} onChange={this.handleInput} />
+                        </div>
                     </div>
-                </div>
-                <div className="row">
-                    <label>Email</label>
-                    <div>
-                        <input type="text" id="Email" name="Email" data-val-required="Email is required." 
-                        data-val="true" value={this.state.Email} onChange={this.handleInput} />
+                    <div className="field">
+                        <label>Email</label>
+                        <div className="control">
+                            <input type="text" id="Email" name="Email" data-val-required="Email is required."
+                                data-val="true" value={this.state.Email} onChange={this.handleInput} />
+                        </div>
                     </div>
-                </div>
-                <div className="row">
-                    <label>Password</label>
-                    <div>
-                        <input type="password" name="Password" id="Password" data-val-required="Password is required" data-val="true"
-                        data-val-length-min="6" data-val-length="Password must be at least 6 characters." value={this.state.Password} 
-                        onChange={this.handleInput} />
+                    <div className="field">
+                        <label>Password</label>
+                        <div className="control">
+                            <input type="password" name="Password" id="Password" data-val-required="Password is required" data-val="true"
+                                data-val-length-min="6" data-val-length="Password must be at least 6 characters." value={this.state.Password}
+                                onChange={this.handleInput} />
+                        </div>
                     </div>
-                </div>
-                <div className="row">
-                    <input type="submit" value="Register" onClick={this.handleFormSubmit} />
+                    <div className="field">
+                        <input type="submit" value="Register" onClick={this.handleFormSubmit} />
+                    </div>
                 </div>
             </Wrapper>
         )
