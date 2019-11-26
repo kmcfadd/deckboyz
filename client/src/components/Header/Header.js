@@ -7,8 +7,8 @@ export default class Header extends React.Component {
         let i = 0
         if (i == 0) {
             document.getElementById("item2").style.transform = 'translateY(200px)'
-            document.getElementById("item3").style.transform = 'translateY(200px) translateX(-150px) rotateY(360deg)'
-            document.getElementById("item5").style.transform = 'translateY(200px) translateX(-300px) rotateY(360deg)'
+            document.getElementById("item3").style.transform = 'translateY(200px) translateX(-150px)'
+            document.getElementById("item5").style.transform = 'translateY(200px) translateX(-300px)'
             document.getElementById("item4").style.transform = 'translateX(150px) translateY(200px)'
             i = 1
         } else {
@@ -32,9 +32,16 @@ export default class Header extends React.Component {
                         </a>
                     </div>
                     <div className="item3" id="item3">
-                        <a href="/deckbuilder">
-                            <img src={MTG} alt="magic card" />
-                        </a>
+                        <div className="flip-card-front">
+                            <a href="/deckbuilder">
+                                <img src={MTG} alt="magic card" />
+                            </a>
+                        </div>
+                        <div className="flip-card-back">
+                            <p>Build Decks!</p>
+
+                        </div>
+
                     </div>
                     <div className="item4" id="item4">
                         <a href="/register">

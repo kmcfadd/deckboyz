@@ -14,11 +14,16 @@ if (process.env.NODE_ENV === "production") {
 }
 
 app.use(routes)
+app.use('/api/users', require('./routes/api/users'))
 
 mongoose.connect(
-  process.env.MONGODB_URI || 
-  'mongodb://user1:password1@dbh23.mlab.com:27237/heroku_6t5lff23', 
-{ useNewUrlParser: true })
+  process.env.MONGODB_URI ||
+  'mongodb://user1:password1@dbh23.mlab.com:27237/heroku_6t5lff23',
+  {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+  })
 
 // Send every other request to the React app
 // Define any API routes before this runs
