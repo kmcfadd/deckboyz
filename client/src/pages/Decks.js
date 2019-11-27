@@ -34,13 +34,7 @@ class Decks extends Component {
     render() {
         const { isBoxVisible } = this.state
         const modalStyle = {
-            backgroundColor: "white",
-            width: "30%",
-            height: "100%",
-            top: 0,
-            bottom: 0,
-            left: 0,
-            right: 0,
+            backgroundColor: "white"
         }
         const wrapStyle = {
             display: 'flex',
@@ -76,7 +70,7 @@ class Decks extends Component {
                                 ))}
                                 {this.state.currentDeck.map(deck => (
                                     <div className={`modal ${isBoxVisible ? "is-active" : " "}`}>
-                                        <div className="modal-background" style={{ modalStyle }}></div>
+                                        <div className="modal-background" style={{ backgroundColor: "white" }}></div>
                                         < li className="modal-content" style={{ listStyleType: 'none' }}>
                                             <h1><strong>{deck.deckName}</strong> created by <strong>{deck.createdBy}</strong></h1>
                                             <hr />

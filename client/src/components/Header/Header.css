@@ -55,6 +55,9 @@ a{
 .item3:hover .flip-card-back{
     transform: rotateY(180deg)
 }
+.flip-card-front, .flip-card-back{
+    backface-visibility: hidden;
+}
 .item4{
     bottom:545px;
 }

@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const loginController = require('../../controllers/loginController');
-const bcrypt = require('bcryptjs')
+const verify = require("../../middleware/auth")
 
 // user model
 const User = require('../../models/user.js')
@@ -10,6 +10,11 @@ const User = require('../../models/user.js')
 //@access public
 
 router.route('/')
-    .post(loginController.test)
+    .get(verify, loginController.something)
+    .post(loginController.register)
+router.route('/auth')
+    .post(loginController.auth)
+
+
 
 module.exports = router
