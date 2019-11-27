@@ -38,13 +38,7 @@ class Decks extends Component {
     render() {
         const { isBoxVisible } = this.state
         const modalStyle = {
-            backgroundColor: "white",
-            width: "30%",
-            height: "100%",
-            top: 0,
-            bottom: 0,
-            left: 0,
-            right: 0,
+            backgroundColor: "white"
         }
 
         // console.log(this.state.decks)
@@ -61,15 +55,16 @@ class Decks extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="container is-fluid" style={{ display: "flex", flexFlow: 'row wrap' }}>
-                    <Wrapper>
-                        <ul className="columns">
+
+                <Wrapper>
+                    <div className="section">
+                        <ul className="container" style={{ display: "flex", flexDirection: "row" }}>
 
 
                             <div>
                                 {this.state.decks.map(deck => (
 
-                                    <li key={deck._id} onClick={() => this.toggleBox(deck)} className="column" style={{ listStyleType: 'none', border: "1px solid black" }}>
+                                    <li key={deck._id} onClick={() => this.toggleBox(deck)} className="column" style={{ listStyleType: 'none' }}>
                                         <strong>{deck.deckName} by {deck.createdBy}</strong><br />
                                         <i>Submitted {deck.createdOn}</i>
                                         {/*Moment js this sucka */}
@@ -81,7 +76,7 @@ class Decks extends Component {
 
                                 {this.state.currentDeck.map(deck => (
                                     <div className={`modal ${isBoxVisible ? "is-active" : " "}`}>
-                                        <div className="modal-background" style={{ modalStyle }}></div>
+                                        <div className="modal-background" style={{ backgroundColor: "white" }}></div>
                                         < li className="modal-content" style={{ listStyleType: 'none' }}>
                                             <h1><strong>{deck.deckName}</strong> created by <strong>{deck.createdBy}</strong></h1>
                                             <hr />
@@ -104,8 +99,9 @@ class Decks extends Component {
 
 
 
-                    </Wrapper>
-                </div>
+
+                    </div>
+                </Wrapper>
             </div >
         )
     }
